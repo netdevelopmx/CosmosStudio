@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Newtonsoft.Json.Linq.JObject>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                @if (Model.Any())
+                {
+                    var firstItem = Model.First();
+                    foreach (var property in firstItem.Properties())
+                    {
+                        <th>@property.Name</th>
+                    }
+                }
+                <th>Opt</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-json='@Html.Raw(item.ToString())'> 
+                    @foreach (var property in item.Properties())
+                    {
+                        // Check if the value is a JArray or JObject and create a toggle button
+                        if (property.Value is Newtonsoft.Json.Linq.JArray || property.Value is Newtonsoft.Json.Linq.JObject)
+                        {
+                            <td>
+                                <!-- A button to toggle the visibility of the sub-entity details -->
+                                <button class="btn btn-info btn-sm detail-toggle">Details</button>
+                                <!-- Hidden div to hold the details, which can be shown when the button is clicked -->
+                                <div class="sub-entity-details" style="display:none;">
+                                    @Html.Raw(property.Value.ToString())
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@property.Value</td>
+                        }
+                    }
+                    <td>
+                        <button class="btn btn-danger delete-btn" data-doc-id="@item["id"]">Delete</button>
+                    </td>
+                </tr>
+              
+            }
+        </tbody>
+    </table>
+</div>
+ 

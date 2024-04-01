@@ -1,0 +1,100 @@
+﻿@model CosmosDbViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+
+<style>
+    @@media (min-width: 992px) {
+        .fixed-left {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .fixed-right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .offset-lg-2 {
+            margin-left: 16.666667%;
+        }
+    }
+
+    .tree-view ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .database-container-tree .tree-view {
+        list-style-type: none;
+    }
+
+    .database-container-tree .toggle-icon {
+        cursor: pointer;
+        padding-right: 5px;
+    }
+
+    .database-container-tree .database-icon {
+        font-weight: bold;
+    }
+
+    .database-container-tree .container-icon {
+        padding-left: 20px;
+    }
+
+    .database-container-tree .container-list > .container-node {
+        cursor: pointer;
+    }
+
+
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Fixed Left Sidebar for Connection Parameters and Containers Tree -->
+        <div class="col-lg-2 bg-light fixed-left d-none d-lg-block" id="leftSidebar">
+            <div id="connectionSettings">
+                @Html.Partial("_ConnectionSettings")
+            </div>
+            <div id="containersTree">
+                @Html.Partial("_ContainersTree")
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-12 col-lg-6 offset-lg-2">
+            <!-- Top Middle: Query/Action Box -->
+            <div class="row">
+                <div class="col bg-light p-3 border-bottom" id="queryActionBox">
+                    @Html.Partial("_QueryActionBox")
+                </div>
+            </div>
+            <!-- Bottom Middle: Items Result Section -->
+            <div class="row">
+                <div id="itemsResultSection" class="my-3">
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Fixed Right Sidebar for Document Item Explorer -->
+        <div class="col-lg-4 bg-light fixed-right d-none d-lg-block" id="documentItemExplorer">
+            @Html.Partial("_DocumentItemExplorer")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/home/home.js" asp-append-version="true"></script>
+    <!-- Additional scripts can be added here -->
+}

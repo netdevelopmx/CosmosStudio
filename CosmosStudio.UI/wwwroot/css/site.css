@@ -1,0 +1,66 @@
+:root {
+    /* Sunset color theme */
+    --bs-primary: #ff7e5f; /* Sunset Orange */
+    --bs-secondary: #feb47b; /* Sunset Light Orange */
+    --bs-info: #355c7d; /* Deep Blue */
+    --bs-light: #ffccbb; /* Light Peach */
+    --bs-dark: #554339; /* Dark Brown */
+    --bs-white: #fffaf0; /* Off-white */
+}
+
+/* Override Bootstrap button colors */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-secondary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+}
+
+/* Customize other styles as needed to match the sunset theme */
+
+/* General body styling */
+body {
+    font-size: 0.9rem;
+}
+
+/* Container Tree */
+#containersTree {
+    border-right: 1px solid #dee2e6;
+    overflow-y: auto; /* If you have many containers, they will be scrollable */
+}
+
+/* Query Action Box */
+#queryActionBox {
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Query Text Area */
+#queryInput {
+    min-height: 100px; /* Set a minimum height for the query input */
+}
+
+/* Document Details */
+#documentItemExplorer textarea {
+    font-family: monospace; /* Ensures JSON is easily readable */
+    background-color: #f8f9fa; /* Light background for the textarea */
+}
+
+/* Connection Settings */
+#connectionSettings {
+    padding-top: 20px; /* Adds some spacing at the top */
+}
+
+/* Table styling */
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa; /* Light background on hover for table rows */
+}
+
+/* Pagination */
+.pagination {
+    justify-content: center; /* Center the pagination */
+}
+
+/* Additional styling can be added as needed */
